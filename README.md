@@ -1,4 +1,4 @@
-# [Project]My Week
+# [Project]My Week Day
 
  기초다지기 프로제트이며 나의 일주일의 상태를 나타내는 프로젝트에 도전합니다.
 
