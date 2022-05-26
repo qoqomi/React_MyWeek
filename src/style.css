@@ -1,0 +1,18 @@
+
+
+.circle {
+    margin: 3px;
+    width: 30px;
+    height: 30px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    float: left;
+}
+
+.tri {
+    margin: auto;
+    border-bottom: 30px solid purple;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    transform: rotate(90deg);
+}
