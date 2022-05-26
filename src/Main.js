@@ -7,9 +7,6 @@ const Main = (props) => {
   let history = useHistory();
   const my_lists = props.list;
   const [circle, circle_change] = React.useState([0, 1, 2, 3, 4]);
-  const [end, setend] = React.useState(0);
-  const last = [];
-
   const random_stars = [];
 
   for (let i = 0; i < 7; i++) {
@@ -18,7 +15,13 @@ const Main = (props) => {
   }
 
   const random_x = random_stars.reduce((acc, cur) => acc + cur, 0);
-  const random_y = (random_x / random_stars.length).toFixed(2);
+
+  // const random_y = (random_x / random_stars.length).toFixed(2);
+  // const [end, setend] = React.useState(0);
+
+  const [random_y, setrandom_y] = React.useState(
+    (random_x / random_stars.length).toFixed(2)
+  );
 
   const getRandom = (min, max) =>
     //최대값 범위 내에서 정수 형태의 난수를 지정
@@ -86,7 +89,13 @@ const Main = (props) => {
             border: "1px solid",
             borderRadius: "10px",
           }}
-          onClick={() => {}}
+          onChange={(e) => {
+            console.log(e.target.value);
+          }}
+          onClick={() => {
+            let input = 0;
+            setrandom_y(input);
+          }}
         >
           Reset
         </button>
