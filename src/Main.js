@@ -7,25 +7,44 @@ const Main = (props) => {
   let history = useHistory();
   const my_lists = props.list;
   const [circle, circle_change] = React.useState([0, 1, 2, 3, 4]);
+  const [end, setend] = React.useState(0);
+  const last = [];
+
+  const random_stars = [];
+
+  for (let i = 0; i < 7; i++) {
+    // 1-5사이 숫자 랜덤으로 7개 생성해서 배열에 담기
+    random_stars.push(Math.floor(Math.random() * 5) + 1);
+  }
+
+  const random_x = random_stars.reduce((acc, cur) => acc + cur, 0);
+  const random_y = (random_x / random_stars.length).toFixed(2);
+
+  const getRandom = (min, max) =>
+    //최대값 범위 내에서 정수 형태의 난수를 지정
+    Math.floor(Math.random() * (max - min) + min);
+  const num = getRandom(0, 5);
+  console.log(num);
 
   return (
     <ListStyle>
       <Title>내 일주일은?</Title>
       {my_lists.map((list, index) => {
-        const getRandom = (min, max) =>
-          Math.floor(Math.random() * (max - min) + min);
-        const num = getRandom(0, 5);
         return (
           <div id="grid">
             <ItemStyle className="list_item" key={index}>
               {list}
             </ItemStyle>
+
             <div className="circles">
               {circle.map((e, i) => {
                 return (
                   <div
                     className="circle"
-                    style={{ backgroundColor: i <= num ? "yellow" : "#e0e0e0" }}
+                    style={{
+                      backgroundColor:
+                        i + 1 <= random_stars[index] ? "yellow" : "#e0e0e0",
+                    }}
                   ></div>
                 );
               })}
@@ -39,6 +58,39 @@ const Main = (props) => {
           </div>
         );
       })}
+      <div>
+        <h1
+          style={{
+            fontSize: "25px",
+            color: "blue",
+          }}
+        >
+          {random_y}
+        </h1>
+        <h1
+          style={{
+            fontSize: "25px",
+            color: "blue",
+            marginTop: "-20px",
+          }}
+        >
+          평점
+        </h1>
+
+        <button
+          style={{
+            backgroundColor: "#1E90FF",
+            fontSize: "15px",
+            color: "white",
+            padding: "10px 40px",
+            border: "1px solid",
+            borderRadius: "10px",
+          }}
+          onClick={() => {}}
+        >
+          Reset
+        </button>
+      </div>
     </ListStyle>
   );
 };

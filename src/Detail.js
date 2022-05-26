@@ -9,6 +9,7 @@ const Detail = (props) => {
   let history = useHistory();
   const [circle, circle_change] = React.useState([0, 1, 2, 3, 4]);
   const [index, index_change] = React.useState();
+
   return (
     <div className="detail">
       <h3>
